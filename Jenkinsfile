@@ -65,7 +65,7 @@ pipeline {
           mkdir .kube
           ls
           cat $KUBECONFIG > .kube/config
-          cp fastapi/values.yaml values.yml
+          // cp fastapi/values.yaml values.yml #make the job fail
           cat values.yml
           sed -i "s+tag.*+tag: ${DOCKER_TAG}+g" values.yml
           helm upgrade --install app fastapi --values=values.yml --namespace dev
